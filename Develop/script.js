@@ -1,13 +1,19 @@
 // Assignment code here
-const alpha = ' abcdefghijklmnopqrstuvwxyz';
-const special = '-_@!$&%';
-const num = '1234567890';
-let len = 0;
-let temp = ''; 
-
 function generatePassword(){
+
+      const alpha = 'abcdefghijklmnopqrstuvwxyz';
+      const special = '-_@!$&%';
+      const num = '1234567890';
+      let temp = ''; 
+
+
     //Ask user to specify legth of password between 8 and 128
-    len - prompt('How long would you like your password to be?(8-128)');
+    let len = prompt('How long would you like your password to be?(8-128)');
+    // Checks to see if user selected a number within paramaters before moving on
+    if (len < 8 ||len > 128 ) {
+            alert("Needs to be between 8 and 128! Try Again.")
+            return;
+    }
 
 
     //Prompts user to select what they would like included in their password.
@@ -30,9 +36,19 @@ function generatePassword(){
       temp+= num;
     };
 
+
+
+
     //writes it to console log
     console.log(temp);
-
+    var tempPass = "";
+    //Runs a loop to generate rand var from array tempPassword for the lenth of len
+    for(var i = 0; i < len; i++) {
+        tempPass += temp[Math.floor(Math.random()*temp.length)];
+        
+    }
+    //passes tempPass to password var in writePassword.
+    return tempPass;
 }
 
 
@@ -43,7 +59,6 @@ var generateBtn = document.querySelector("#generate");
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
 
 }
