@@ -9,6 +9,8 @@ function generatePassword(){
 
     //Ask user to specify legth of password between 8 and 128
     let len = prompt('How long would you like your password to be?(8-128)');
+    console.log(len);
+
     // Checks to see if user selected a number within paramaters before moving on
     if (len < 8 ||len > 128 ) {
             alert("Needs to be between 8 and 128! Try Again.")
@@ -22,31 +24,38 @@ function generatePassword(){
     const spChars = confirm('Do you want special charachters?')
     const number  = confirm('Do you want numbers?')
 
-    //Checks to see if input is true or false for above cases and adds/skips adding to temp variable.
+    //var to pass temp into tempPass to display on screen.
+    var tempPass = "";
+    
+    //Runs a loop to generate rand var from array tempPassword for the lenth of len
+    for(var i = 0; i < len && temp.length <= len; i++) {
+    
+      //Checks to see if input is true or false for above cases and adds/skips adding to temp variable.
     if(caps) {
-      temp += alpha.toLocaleUpperCase();
+      temp += alpha.toLocaleUpperCase()[Math.floor(Math.random()*alpha.length)];
+      console.log(temp);
     };
     if(lower){
-      temp += alpha;
+      temp += alpha[Math.floor(Math.random()*alpha.length)];
+      console.log(temp);
     };
     if(spChars) {
-      temp += special;
+      temp += special[Math.floor(Math.random()*special.length)];
+      console.log(temp);
     };
     if(number){
-      temp+= num;
+      temp+= num[Math.floor(Math.random()*num.length)];
+      console.log(temp);
     };
-
-
-
-
-    //writes it to console log
-    console.log(temp);
-    var tempPass = "";
-    //Runs a loop to generate rand var from array tempPassword for the lenth of len
-    for(var i = 0; i < len; i++) {
-        tempPass += temp[Math.floor(Math.random()*temp.length)];
-        
+       tempPass = temp;
+       console.log(tempPass.length);
     }
+   // var tempPass = "";
+    //Runs a loop to generate rand var from array tempPassword for the lenth of len
+    //for(var i = 0; i < len; i++) {
+      //  tempPass += temp[Math.floor(Math.random()*temp.length)];
+        
+    //}
     //passes tempPass to password var in writePassword.
     return tempPass;
 }
