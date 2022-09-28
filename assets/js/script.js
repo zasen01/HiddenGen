@@ -17,13 +17,11 @@ function generatePassword()
                   alert("Needs to be between 8 and 128! Try Again.")
                   return;
           }
-
-
             //Prompts user to select what they would like included in their password.
-            const caps = confirm('Do you want Uppercase?')
-            const lower = confirm('Do you want lowercase?')
-            const spChars = confirm('Do you want special charachters?')
-            const number  = confirm('Do you want numbers?')
+            const caps = confirm('Would you like to include Uppercase?')
+            const lower = confirm('Would you like to include lowercase?')
+            const spChars = confirm('Would you like to include charachters?')
+            const number  = confirm('Would you like to include numbers?')
             
 
     //Runs a loop to generate rand var from array tempPassword for the lenth of len
